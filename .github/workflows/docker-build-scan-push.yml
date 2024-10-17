@@ -60,5 +60,5 @@ jobs:
           eval "$(ssh-agent -s)"
           ssh-add ~/.ssh/id_rsa
           ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@${{ secrets.REMOTE_HOST }} "sudo docker ps -a --format '{{.Names}}' | grep -w "gh-container" && sudo docker stop gh-container"
-          #ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@${{ secrets.REMOTE_HOST }} "sudo docker images -q eyembrad/github:latest | grep -q . && sudo docker rmi eyembrad/github:latest"
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@${{ secrets.REMOTE_HOST }} "sudo docker images -q eyembrad/github:latest | grep -q . && sudo docker rmi eyembrad/github:latest"
           ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@${{ secrets.REMOTE_HOST }} "sudo docker run -it --rm -d --name gh-container -p 8181:80 eyembrad/github:latest"
