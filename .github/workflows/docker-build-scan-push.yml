@@ -25,7 +25,7 @@ jobs:
       WIZ_VULN_POLICY: "otlin Default vulnerabilities policy"
       WIZ_SECRET_POLICY: "otlin Default secrets policy"
       WIZ_DATA_POLICY: "otlin Default sensitive data policy"
-      WIZ_IAC_POLICY: "otlin Default IAC policy"
+      WIZ_IAC_POLICY: "otlin Default IaC policy"
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
