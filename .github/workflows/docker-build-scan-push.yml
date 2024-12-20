@@ -25,6 +25,7 @@ jobs:
       WIZ_VULN_POLICY: "otlin Default vulnerabilities policy"
       WIZ_SECRET_POLICY: "otlin Default secrets policy"
       WIZ_DATA_POLICY: "otlin Default sensitive data policy"
+      WIZ_IAC_POLICY: "otlin Default IAC policy"
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
@@ -42,7 +43,7 @@ jobs:
       - name: Run Wiz CLI image scan
         id: scan
         run: |-
-          sudo -E ./wizcli docker scan -i ${IMAGE_REPO}:${IMAGE_TAG} --policy "$WIZ_VULN_POLICY" --policy "$WIZ_DATA_POLICY" --policy "$WIZ_SECRET_POLICY" --policy-hits-only \
+          sudo -E ./wizcli docker scan -i ${IMAGE_REPO}:${IMAGE_TAG} --policy "$WIZ_VULN_POLICY" --policy "$WIZ_DATA_POLICY" --policy "$WIZ_SECRET_POLICY" --policy "$WIZ_IAC_POLICY" --policy-hits-only \
           --driver mountWithLayers --dockerfile "./Dockerfile" --output wiz-output.json,sarif,true --tag github_action_run_id=${{ github.run_id }}
         continue-on-error: true
 
