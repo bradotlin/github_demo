@@ -5,11 +5,7 @@ on:
     branches:
       - main
 
-env:
-  GITHUB_REF_NAME: "main"
-  GITHUB_ACTOR: "brad.otlin@wiz.io"
-  GITHUB_REPOSITORY: "https://github.com/bradotlin/github_demo/"
-  GITHUB_SHA: "3af5929b750598e2b8c11550f11d71adbbe3e1c8"
+
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel  
 jobs:
@@ -68,4 +64,4 @@ jobs:
           eval "$(ssh-agent -s)"
           ssh-add ~/.ssh/id_rsa
           ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@${{ secrets.REMOTE_HOST }} "sudo pwd"
-          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@${{ secrets.REMOTE_HOST }} "sudo docker run -it --rm -d --name gh-container -p 8989:80 eyembrad/github:latest"
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@${{ secrets.REMOTE_HOST }} "sudo docker run -it --rm -d --name gh-container2 -p 8888:80 eyembrad/github:latest"
